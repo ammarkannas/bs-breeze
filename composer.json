@@ -1,6 +1,6 @@
 {
     "name": "ammarkannas/bs-breeze",
-    "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+    "description": "Minimal Laravel authentication scaffolding with Blade and Bootstrap css.",
     "keywords": ["laravel", "auth"],
     "license": "MIT",
     "authors": [
