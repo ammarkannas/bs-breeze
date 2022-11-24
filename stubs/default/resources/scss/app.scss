@@ -1,0 +1,13 @@
+@import "variables";
+@import "bootstrap";
+
+
+@include media-breakpoint-down(sm) {
+    .navbar-dropdown {
+        border: 0px !important;
+
+        .dropdown-item {
+            border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+    }
+}
