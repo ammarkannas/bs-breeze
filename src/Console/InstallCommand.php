@@ -13,7 +13,12 @@ class InstallCommand extends BreezeInstallCommand
      *
      * @var string
      */
-    protected $signature = 'bs-breeze:install';
+    protected $signature = 'bs-breeze:install {stack=blade : The development stack that should be installed (blade,react,vue,api)}
+                            {--dark : Indicate that dark mode support should be installed}
+                            {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
+                            {--pest : Indicate that Pest should be installed}
+                            {--ssr : Indicates if Inertia SSR support should be installed}
+                            {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
@@ -52,14 +57,14 @@ class InstallCommand extends BreezeInstallCommand
                     'sass' => '^1.56.1',
                     'axios' => '^1.1.2',
                     'laravel-vite-plugin' => '^0.6.0',
-                    'lodash' => '.17.19',
+                    'lodash' => '^4.17.21',
                     'vite' => '^3.0.0',
                 ];
         });
 
         // Views...
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../../stubs/default/resources/views', resource_path('views'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/resources/views', resource_path('views'));
 
         $fs = new Filesystem();
 
@@ -71,16 +76,13 @@ class InstallCommand extends BreezeInstallCommand
             $fs->delete(base_path('postcss.config.js'));
         }
 
-        if($fs->exists(base_path('vite.config.js'))) {
-            $fs->delete(base_path('vite.config.js'));
-        }
-
-        copy(__DIR__ . '/../../../stubs/default/vite.config.js', base_path('vite.config.js'));
+        copy(__DIR__ . '/../../stubs/default/vite.config.js', base_path('vite.config.js'));
 
         // Sass & Js
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../../stubs/default/resources/scss', resource_path('scss'));
-        copy(__DIR__ . '/../../../stubs/default/resources/js/app.js', resource_path('js/app.js'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/resources/scss', resource_path('scss'));
+        copy(__DIR__ . '/../../stubs/default/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
+        copy(__DIR__ . '/../../stubs/default/resources/js/app.js', resource_path('js/app.js'));
 
         $this->runCommands(['npm update', 'npm run build']);
 
