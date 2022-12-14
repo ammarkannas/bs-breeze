@@ -1,10 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h5 class="fw-semibold">
-            {{ __('Profile') }}
-        </h5>
-    </x-slot>
-
+<x-layout class="container py-5">
     <div class="container">
         <div class="mx-auto">
             <div class="p-4 bg-white shadow-sm mb-3 rounded">
@@ -26,4 +20,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>

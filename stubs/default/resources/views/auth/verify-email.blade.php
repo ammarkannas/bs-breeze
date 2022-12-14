@@ -1,13 +1,7 @@
-<x-guest-layout class="container">
+<x-layout class="container py-5">
     <div class="row d-flex flex-column align-content-center">
-        <div class="col-6 text-center">
-            <a href="/">
-                <x-application-logo class="w-25 h-25 text-danger my-3" style="fill: currentColor;" />
-            </a>
-        </div>
-
         <div class="col-6">
-            <x-auth-card class="border-0 shadow-sm">
+            <div class="p-4 bg-white shadow-sm mb-3 rounded">
                 <div class="mb-4 small text-black-50">
                     {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
                 </div>
@@ -23,9 +17,9 @@
                         @csrf
 
                         <div>
-                            <x-primary-button>
+                            <button class="btn btn-sm btn-primary" type="submit">
                                 {{ __('Resend Verification Email') }}
-                            </x-primary-button>
+                            </button>
                         </div>
                     </form>
 
@@ -37,7 +31,7 @@
                         </button>
                     </form>
                 </div>
-            </x-auth-card>
+            </div>
         </div>
     </div>
-</x-guest-layout>
+</x-layout>

@@ -1,49 +1,51 @@
-<x-guest-layout class="container">
+<x-layout class="container py-5">
     <div class="row d-flex flex-column align-content-center">
-        <div class="col-4 text-center">
-            <a href="/">
-                <x-application-logo class="w-25 h-25 text-danger my-3" style="fill: currentColor;" />
-            </a>
-        </div>
         <div class="col-4">
-            <x-auth-card class="border-0 shadow-sm">
-                <x-slot name="logo">
-                    <a href="/">
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                    </a>
-                </x-slot>
-
+            <div class="p-4 bg-white shadow-sm mb-3 rounded">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    <!-- Name -->
+                    {{-- Username --}}
                     <div>
-                        <x-text-input type="text" name="name" :value="old('name')" :label="__('Name')" required
-                                      autofocus validation />
+                        <label for="name" class="form-label">
+                            {{ __('Name') }}
+                        </label>
+
+                        <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}" required>
 
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
 
-                    <!-- Email Address -->
+                    {{-- Email Address --}}
                     <div class="mt-4">
-                        <x-text-input type="email" name="email" :value="old('email')" :label="__('Email')"
-                                      required validation />
+                        <label for="email" class="form-label">
+                            {{ __('Email') }}
+                        </label>
+
+                        <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
-                    <!-- Password -->
+                    {{-- Password --}}
                     <div class="mt-4">
-                        <x-text-input type="password" name="password" :label="__('Password')" required
-                                      autocomplete="new-password" />
+                        <label for="password" class="form-label">
+                            {{ __('Password') }}
+                        </label>
+
+                        <input type="password" id="password" class="form-control" name="password" autocomplete="new-password">
 
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
-                    <!-- Confirm Password -->
+                    {{-- Confirm Password --}}
                     <div class="mt-4">
-                        <x-text-input class="block mt-1 w-full" type="password" :label="__('Confirm Password')"
-                                      name="password_confirmation" required />
+                        <label for="password_confirmation" class="form-label">
+                            {{ __('Confirm Password') }}
+                        </label>
+
+                        <input type="password" id="password_confirmation" class="form-control"
+                               name="password_confirmation" autocomplete="new-password">
 
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
@@ -53,12 +55,12 @@
                             {{ __('Already registered?') }}
                         </a>
 
-                        <x-primary-button class="ml-4">
+                        <button class="btn btn-sm btn-primary" type="submit">
                             {{ __('Register') }}
-                        </x-primary-button>
+                        </button>
                     </div>
                 </form>
-            </x-auth-card>
+            </div>
         </div>
     </div>
-</x-guest-layout>
+</x-layout>
