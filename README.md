@@ -1,4 +1,4 @@
-# Add bootstrap css to laravel/breeze package
+# Add support to bootstrap css to laravel/breeze package
 
 ### Install
 ```bash 
